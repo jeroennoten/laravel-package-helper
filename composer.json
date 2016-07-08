@@ -1,0 +1,17 @@
+{
+    "name": "jeroennoten/laravel-package-helper",
+    "description": "Helpers for Laravel packages",
+    "keywords": ["laravel", "package", "helper"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen Noten",
+            "email": "jeroennoten@me.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JeroenNoten\\LaravelPackageHelper\\": "src/"
+        }
+    }
+}

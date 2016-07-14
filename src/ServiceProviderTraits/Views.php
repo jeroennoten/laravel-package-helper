@@ -12,7 +12,7 @@ trait Views {
 
         $this->publishes([
             $viewsPath => base_path("resources/views/vendor/{$this->name()}"),
-        ], $this->name());
+        ], 'views');
     }
 
     protected abstract function publishes(array $paths, $group = null);

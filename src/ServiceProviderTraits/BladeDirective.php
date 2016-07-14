@@ -8,7 +8,7 @@ trait BladeDirective
     {
         Blade::directive($name, function ($expression) use ($class, $method) {
             $expression = $expression ?? '()';
-            return "<?=app({$class})->$method$expression;?>";
+            return "<?=app({$class}::class)->$method$expression;?>";
         });
     }
 }

@@ -15,4 +15,7 @@ trait Views {
         ], $this->name);
     }
 
+    protected abstract function publishes(array $paths, $group = null);
+
+    protected abstract function loadViewsFrom($path, $namespace);
 }

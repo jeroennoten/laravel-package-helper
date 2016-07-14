@@ -13,5 +13,8 @@
         "psr-4": {
             "JeroenNoten\\LaravelPackageHelper\\": "src/"
         }
+    },
+    "require": {
+        "laravel/framework": "^5.2"
     }
 }

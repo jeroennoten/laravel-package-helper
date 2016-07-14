@@ -14,4 +14,8 @@ trait Config {
 
         $this->mergeConfigFrom($configPath, $this->name);
     }
+
+    protected abstract function publishes(array $paths, $group = null);
+
+    protected abstract function mergeConfigFrom($path, $key);
 }

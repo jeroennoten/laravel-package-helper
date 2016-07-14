@@ -9,7 +9,9 @@ trait Assets
     private function publishAssets()
     {
         $this->publishes([
-            "$this->path/resources/assets" => base_path("resources/assets"),
+            "$this->path/resources/assets" => public_path('vendor'),
         ], 'assets');
     }
+
+    protected abstract function publishes(array $paths, $group = null);
 }

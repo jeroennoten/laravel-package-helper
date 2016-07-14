@@ -13,7 +13,11 @@ trait Translations
         $this->loadTranslationsFrom($translationsPath, $this->name);
 
         $this->publishes([
-            $translationsPath => base_path("resources/lang/vendor/$this->name"),
+            $translationsPath => resource_path("lang/vendor/$this->name"),
         ], 'translations');
     }
+
+    protected abstract function publishes(array $paths, $group = null);
+
+    protected abstract function loadTranslationsFrom($path, $namespace);
 }

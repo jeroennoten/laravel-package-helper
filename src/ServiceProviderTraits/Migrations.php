@@ -9,7 +9,9 @@ trait Migrations
     private function publishMigrations()
     {
         $this->publishes([
-            "$this->path/database/migrations" => base_path("database/migrations"),
+            "$this->path/database/migrations" => database_path('migrations'),
         ], 'migrations');
     }
+
+    protected abstract function publishes(array $paths, $group = null);
 }

@@ -8,10 +8,8 @@ trait Migrations
 {
     private function publishMigrations()
     {
-        $migrationsPath = "$this->path/database/migrations";
-
         $this->publishes([
-            $migrationsPath => base_path("database/migrations"),
+            "$this->path/database/migrations" => base_path("database/migrations"),
         ], 'migrations');
     }
 }

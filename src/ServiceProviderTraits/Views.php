@@ -19,7 +19,7 @@ trait Views {
 
     protected abstract function loadViewsFrom($path, $namespace);
 
-    protected abstract function path(): string;
+    protected abstract function path();
 
-    protected abstract function name(): string;
+    protected abstract function name();
 }

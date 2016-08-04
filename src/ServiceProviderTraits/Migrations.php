@@ -15,5 +15,5 @@ trait Migrations
 
     protected abstract function publishes(array $paths, $group = null);
 
-    protected abstract function path(): string;
+    protected abstract function path();
 }

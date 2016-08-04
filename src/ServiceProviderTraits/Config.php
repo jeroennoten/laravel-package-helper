@@ -10,7 +10,7 @@ trait Config {
 
         $this->publishes([
             $configPath => config_path("{$this->name()}.php"),
-        ], $this->name());
+        ], 'config');
 
         $this->mergeConfigFrom($configPath, $this->name());
     }
@@ -19,7 +19,7 @@ trait Config {
 
     protected abstract function mergeConfigFrom($path, $key);
 
-    protected abstract function path(): string;
+    protected abstract function path();
 
-    protected abstract function name(): string;
+    protected abstract function name();
 }

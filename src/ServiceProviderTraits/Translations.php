@@ -21,7 +21,7 @@ trait Translations
 
     protected abstract function loadTranslationsFrom($path, $namespace);
 
-    protected abstract function path(): string;
+    protected abstract function path();
 
-    protected abstract function name(): string;
+    protected abstract function name();
 }

@@ -4,13 +4,13 @@
 namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 
-trait Assets
+trait PublicAssets
 {
-    private function publishAssets()
+    private function publishPublicAssets()
     {
         $this->publishes([
-            "{$this->path()}/resources/assets" => public_path("vendor/{$this->name()}"),
-        ], 'assets');
+            "{$this->path()}/public" => public_path("vendor/{$this->name()}"),
+        ], 'public');
     }
 
     protected abstract function publishes(array $paths, $group = null);

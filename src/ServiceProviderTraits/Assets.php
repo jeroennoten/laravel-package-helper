@@ -6,16 +6,12 @@ namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 trait Assets
 {
-    private function publishAssets()
+    use Slug, Path, Publishes, Tag;
+
+    protected function publishAssets()
     {
         $this->publishes([
-            "{$this->path()}/resources/assets" => public_path("vendor/{$this->name()}"),
-        ], 'assets');
+            "{$this->path()}/resources/assets" => public_path("vendor/{$this->slug()}"),
+        ], $this->tag('assets'));
     }
-
-    protected abstract function publishes(array $paths, $group = null);
-
-    protected abstract function path();
-
-    protected abstract function name();
 }

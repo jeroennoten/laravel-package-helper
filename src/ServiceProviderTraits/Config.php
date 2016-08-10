@@ -2,24 +2,20 @@
 
 namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
-trait Config {
+trait Config
+{
+    use Publishes, Path, Name, Tag;
 
-    private function publishConfig()
+    protected function publishConfig()
     {
         $configPath = "{$this->path()}/config/{$this->name()}.php";
 
         $this->publishes([
             $configPath => config_path("{$this->name()}.php"),
-        ], 'config');
+        ], $this->tag('config'));
 
         $this->mergeConfigFrom($configPath, $this->name());
     }
 
-    protected abstract function publishes(array $paths, $group = null);
-
     protected abstract function mergeConfigFrom($path, $key);
-
-    protected abstract function path();
-
-    protected abstract function name();
 }

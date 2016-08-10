@@ -6,7 +6,7 @@ namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 trait Migrations
 {
-    private function publishMigrations()
+    protected function publishMigrations()
     {
         $this->publishes([
             "{$this->path()}/database/migrations" => database_path('migrations'),

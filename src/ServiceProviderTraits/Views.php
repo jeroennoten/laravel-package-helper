@@ -2,9 +2,11 @@
 
 namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
-trait Views {
+trait Views
+{
+    use Tag, Path, Publishes, Name;
 
-    private function loadViews()
+    protected function loadViews()
     {
         $viewsPath = "{$this->path()}/resources/views";
 
@@ -12,14 +14,8 @@ trait Views {
 
         $this->publishes([
             $viewsPath => base_path("resources/views/vendor/{$this->name()}"),
-        ], 'views');
+        ], $this->tag('views'));
     }
 
-    protected abstract function publishes(array $paths, $group = null);
-
     protected abstract function loadViewsFrom($path, $namespace);
-
-    protected abstract function path();
-
-    protected abstract function name();
 }

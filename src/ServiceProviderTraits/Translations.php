@@ -6,7 +6,9 @@ namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 trait Translations
 {
-    private function loadTranslations()
+    use Tag, Publishes, Path;
+
+    protected function loadTranslations()
     {
         $translationsPath = "{$this->path()}/resources/lang";
 
@@ -14,14 +16,8 @@ trait Translations
 
         $this->publishes([
             $translationsPath => resource_path("lang/vendor/{$this->name()}"),
-        ], 'translations');
+        ], $this->tag('translations'));
     }
 
-    protected abstract function publishes(array $paths, $group = null);
-
     protected abstract function loadTranslationsFrom($path, $namespace);
-
-    protected abstract function path();
-
-    protected abstract function name();
 }

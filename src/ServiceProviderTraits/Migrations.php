@@ -6,11 +6,13 @@ namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 trait Migrations
 {
-    protected function publishMigrations()
+    use Tag;
+
+    public function publishMigrations()
     {
         $this->publishes([
             "{$this->path()}/database/migrations" => database_path('migrations'),
-        ], 'migrations');
+        ], $this->tag('migrations'));
     }
 
     protected abstract function publishes(array $paths, $group = null);

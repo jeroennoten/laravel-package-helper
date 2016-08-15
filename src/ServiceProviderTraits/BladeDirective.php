@@ -4,9 +4,9 @@ trait BladeDirective
 {
     use Blade;
 
-    protected function bladeDirective($name, $class, $method)
+    public function bladeDirective($name, $class, $method)
     {
-        Blade::directive($name, function ($expression) use ($class, $method) {
+       $this->getBlade()->directive($name, function ($expression) use ($class, $method) {
             $expression = isset($expression) ? $expression : '()';
             return "<?=app({$class}::class)->$method$expression;?>";
         });

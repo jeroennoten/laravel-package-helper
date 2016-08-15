@@ -14,7 +14,18 @@
             "JeroenNoten\\LaravelPackageHelper\\": "src/"
         }
     },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php",
+            "tests/TestServiceProvider.php"
+        ]
+    },
     "require": {
         "laravel/framework": "^5.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "orchestra/testbench": "~3.2.0",
+        "mockery/mockery": "^0.9.5"
     }
 }

@@ -6,9 +6,11 @@ namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 trait PublicAssets
 {
-    use Publishes, Slug, Path, Tag;
+    use Publishes, Slug, Path, Tag {
+        Slug::slug insteadof Tag;
+    }
 
-    protected function publishPublicAssets()
+    public function publishPublicAssets()
     {
         $this->publishes([
             "{$this->path()}/public" => public_path("vendor/{$this->slug()}"),

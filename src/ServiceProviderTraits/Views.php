@@ -6,7 +6,7 @@ trait Views
 {
     use Tag, Path, Publishes, Name;
 
-    protected function loadViews()
+    public function loadViews()
     {
         $viewsPath = "{$this->path()}/resources/views";
 

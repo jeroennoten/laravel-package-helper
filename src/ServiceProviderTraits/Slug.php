@@ -10,7 +10,7 @@ trait Slug
 {
     use Name;
 
-    protected function slug() {
+    public function slug() {
         return Str::slug($this->name());
     }
 }

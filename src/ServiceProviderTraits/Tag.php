@@ -8,7 +8,7 @@ trait Tag
 {
     use Slug;
 
-    protected function tag($category) {
+    public function tag($category) {
         return "{$this->slug()}-$category";
     }
 }

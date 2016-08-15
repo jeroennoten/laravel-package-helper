@@ -6,7 +6,7 @@ trait Config
 {
     use Publishes, Path, Name, Tag;
 
-    protected function publishConfig()
+    public function publishConfig()
     {
         $configPath = "{$this->path()}/config/{$this->name()}.php";
 

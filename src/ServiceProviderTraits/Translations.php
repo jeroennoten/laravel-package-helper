@@ -8,7 +8,7 @@ trait Translations
 {
     use Tag, Publishes, Path;
 
-    protected function loadTranslations()
+    public function loadTranslations()
     {
         $translationsPath = "{$this->path()}/resources/lang";
 

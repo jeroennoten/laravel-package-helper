@@ -15,7 +15,7 @@ trait Translations
         $this->loadTranslationsFrom($translationsPath, $this->name());
 
         $this->publishes([
-            $translationsPath => resource_path("lang/vendor/{$this->name()}"),
+            $translationsPath => base_path("resources/lang/vendor/{$this->name()}"),
         ], $this->tag('translations'));
     }
 

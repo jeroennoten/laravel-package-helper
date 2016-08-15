@@ -36,6 +36,7 @@ class TestCase extends OrchestraTestCase
 
     public function bladeDirectiveTest()
     {
+        $this->artisan('view:clear');
         $this->assertEquals('hello, default', $this->renderView('test'));
         $this->assertEquals('hello, Jeroen', $this->renderView('params'));
     }
@@ -58,7 +59,7 @@ class TestCase extends OrchestraTestCase
             $providerClass,
             'ac-me-translations',
             'resources/lang',
-            resource_path('lang/vendor/ac_me')
+            base_path('resources/lang/vendor/ac_me')
         );
 
         $this->assertEquals(trans('ac_me::test.hi'), 'Hello dude!');
@@ -66,11 +67,12 @@ class TestCase extends OrchestraTestCase
 
     public function viewsTest($providerClass)
     {
+        $this->artisan('view:clear');
         $this->assertPublishes(
             $providerClass,
             'ac-me-views',
             'resources/views',
-            resource_path('views/vendor/ac_me')
+            base_path('resources/views/vendor/ac_me')
         );
 
         $this->assertEquals(view('ac_me::test')->render(), 'Yes!');

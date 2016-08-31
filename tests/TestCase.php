@@ -1,10 +1,23 @@
 <?php
 
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Factory;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 class TestCase extends OrchestraTestCase
 {
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
+    }
+
     public function getMockForTrait(
         $traitName,
         array $arguments = array(),
@@ -51,6 +64,12 @@ class TestCase extends OrchestraTestCase
     public function migrationsTest($providerClass)
     {
         $this->assertPublishes($providerClass, 'ac-me-migrations', 'database/migrations', database_path('migrations'));
+
+        if (version_compare(Application::VERSION, '5.3.0', '>=')) {
+            $this->artisan('migrate');
+
+            $this->assertTrue(Schema::hasTable('test'));
+        }
     }
 
     public function translationsTest($providerClass)

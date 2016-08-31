@@ -1,21 +1,23 @@
 <?php
 
-
 namespace JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
+use Illuminate\Foundation\Application;
 
 trait Migrations
 {
-    use Tag;
+    use Tag, Publishes, Path;
 
     public function publishMigrations()
     {
+        $migrationsPath = "{$this->path()}/database/migrations";
+
         $this->publishes([
-            "{$this->path()}/database/migrations" => database_path('migrations'),
+            $migrationsPath => database_path('migrations'),
         ], $this->tag('migrations'));
+
+        if (version_compare(Application::VERSION, '5.3.0', '>=')) {
+            $this->loadMigrationsFrom($migrationsPath);
+        }
     }
-
-    protected abstract function publishes(array $paths, $group = null);
-
-    protected abstract function path();
 }
